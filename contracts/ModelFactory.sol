@@ -1,6 +1,7 @@
 pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import"@openzeppelin/contracts/utils/Counters.sol";
 
 contract ModelFactory is Ownable{
 
@@ -11,35 +12,26 @@ contract ModelFactory is Ownable{
         string name;
         uint price;
   }
-  uint public ModelCount;
+  using Counters for Counters.Counter;
+  Counters.Counter private ModelId;
+
   Model[] public models;
 //when user buy car
   mapping(address => Model) Orders;
 
   constructor() public {
-    ModelCount = 0;
+    _createModel("Opel", 9000);
+    _createModel("Orel", 6000);
   }
-//meta is Now() from front when car creation start
-  function _createModel(string memory _meta ,uint _price, string memory _name) private onlyOwner{
-        uint Model_Id = uint(keccak256(abi.encodePacked(_meta)));
+
+  function _createModel(string memory _name, uint _price) private onlyOwner{
+        ModelId.increment();
+        uint Model_Id = ModelId.current();
         NewModel(Model_Id, _name, _price);
   }
 
-
-
-  function getModels() public view returns (Model[] memory){
-      Model[] memory id = new Model[](ModelCount);
-      for (uint i = 0; i < ModelCount; i++) {
-          Model storage model = models[i];
-          id[i] = model;
-      }
-      return id;
-  }
   //get info about car by ModelId
   function getModel(uint _ModelId) public view returns(Model memory) {
     return models[_ModelId];
   }
-  //function _getModelInfo(){
-
-  //}
 }
