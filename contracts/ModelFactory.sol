@@ -18,6 +18,7 @@ contract ModelFactory is Ownable{
 //meta is Now() from front when car creation start
   function _createModel(string _meta ,uint _price,string _name) external onlyOwner{
         uint ModelId = keccak256(_meta);
+        models.push(Model(ModelId, _name, _dna));
         NewModel(ModelId, _name, _dna);
     }
   //get info about models
