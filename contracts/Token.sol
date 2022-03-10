@@ -43,7 +43,8 @@ contract Token {
         // If `require`'s first argument evaluates to `false` then the
         // transaction will revert.
         console.log("Sender balance is %s tokens", balances[msg.sender]);
-        console.log("Trying to send %s tokens to %s", amount, to);
+        console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQSSSSSSSSSSSSSSender balance is %s tokens", msg.sender);
+        //console.log("Trying to send %s tokens to %s", amount, to);
         require(balances[msg.sender] >= amount, "Not enough tokens");
 
         // Transfer the amount.

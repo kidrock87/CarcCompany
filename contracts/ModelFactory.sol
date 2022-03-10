@@ -1,7 +1,8 @@
 pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import"@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+import "hardhat/console.sol";
 
 contract ModelFactory is Ownable{
 
@@ -27,7 +28,9 @@ contract ModelFactory is Ownable{
   function _createModel(string memory _name, uint _price) private onlyOwner{
         ModelId.increment();
         uint Model_Id = ModelId.current();
-      emit  NewModel(Model_Id, _name, _price);
+
+        models.push(Model(Model_Id, _name, _price));
+        emit  NewModel(Model_Id, _name, _price);
   }
 
   //get info about car by ModelId
