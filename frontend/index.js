@@ -1,9 +1,9 @@
 async function main() {
     const { ethers } = require("ethers");
-    let provider = await new ethers.providers.JsonRpcProvider();
-    const signer = await provider.getSigner();
+    let provider = await ethers.getDefaultProvider('ropsten');
+    //const signer = await provider.getSigner();
 
-    let address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    let address = "0x12dE38d9eCC8964ee37adBbdeBa73439C83f3252";
 
 
     // The Contract interface
@@ -18,7 +18,7 @@ async function main() {
     let contractAddress = address;
     let contract = await new ethers.Contract(contractAddress, abi, provider);
     let currentValue = await contract.getValue();
-    console.log(currentValue);
+    console.log("sssss: ", currentValue);
 }
 
 main()
