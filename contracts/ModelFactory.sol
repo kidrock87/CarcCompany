@@ -27,7 +27,7 @@ contract ModelFactory is Ownable{
   function _createModel(string memory _name, uint _price) private onlyOwner{
         ModelId.increment();
         uint Model_Id = ModelId.current();
-        NewModel(Model_Id, _name, _price);
+      emit  NewModel(Model_Id, _name, _price);
   }
 
   //get info about car by ModelId

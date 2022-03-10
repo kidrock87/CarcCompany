@@ -74,8 +74,8 @@
       ]
     },
     "C:\\code\\cars\\contracts\\ModelFactory.sol": {
-      "lastModificationDate": 1646143829495,
-      "contentHash": "b711e684764c2c54e2ed071a00ba552a",
+      "lastModificationDate": 1646147683743,
+      "contentHash": "956f8dbb8cab00492e8a147542f07639",
       "sourceName": "contracts/ModelFactory.sol",
       "solcConfig": {
         "version": "0.8.0",
